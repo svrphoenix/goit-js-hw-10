@@ -17,12 +17,12 @@ refs.searchBox.addEventListener('input', debounce(onInputSearch, DEBOUNCE_DELAY)
 function onInputSearch(evt) {
   const { target } = evt;
   const searchValue = target.value.trim();
+  renderClear(refs.countryList, refs.infoBox);
 
   if (searchValue === '') {
-    renderClear(refs.countryList, refs.infoBox);
     return;
   }
-  renderClear(refs.countryList, refs.infoBox);
+
   fetchCountries(searchValue).then(countries => {
     if (countries.length > 10) {
       Notify.warning('Too many matches found. Please enter a more specific name.');
