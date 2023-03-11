@@ -38,11 +38,11 @@ function onInputSearch(evt) {
   });
 }
 
-function renderList(countries, tagRef) {
+function renderList(countries, ulRef) {
   const countryListMarkup = countries.map(country => `<li class="country-item">
     <img class="country-flag" src="${country.flags.svg}" alt="flag of ${country.name.official}">
       <p>${country.name.official}</p></li>`).join('');
-  tagRef.insertAdjacentHTML('afterbegin', countryListMarkup);
+  ulRef.insertAdjacentHTML('afterbegin', countryListMarkup);
 }
 
 function renderCountry(countries, tagRef) {
