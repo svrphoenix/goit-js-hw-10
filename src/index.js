@@ -16,12 +16,12 @@ refs.searchBox.addEventListener('input', debounce(onInputSearch, DEBOUNCE_DELAY)
 
 function onInputSearch(evt) {
   const { target } = evt;
-  let searchValue = '';
-  if (target.value === '') {
+  const searchValue = target.value.trim();
+
+  if (searchValue === '') {
     renderClear(refs.countryList, refs.infoBox);
     return;
   }
-  searchValue = target.value.trim();
   renderClear(refs.countryList, refs.infoBox);
   fetchCountries(searchValue).then(countries => {
     if (countries.length > 10) {
